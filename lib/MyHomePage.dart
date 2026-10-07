@@ -15,47 +15,37 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hotel"),
-        backgroundColor: Color.fromARGB(0, 50, 145, 145),
+        title: const Text("Hotel"),
+        backgroundColor: const Color.fromARGB(0, 50, 145, 145),
       ),
-      //Color.fromRGBO (opacity, red, green, blue)
-      backgroundColor: Color(0xFF2373F4),
+      backgroundColor: const Color(0xFF2373F4),
       body: Column(
         children: [
+          const SizedBox(height: 20), // Memberikan sedikit jarak dari AppBar ke input field
           Center(
-            child: Container(
+            child: SizedBox(
               width: 300,
               child: TextFormField(
                 // Dekorasi untuk TextFormField
-                decoration: InputDecoration(
-                  fillColor: Colors.orange,
+                decoration: const InputDecoration(
+                  fillColor: Colors.white,
                   hintText: 'Masukan Nama Kamu',
                   filled: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(40)),
                   ),
                 ),
-                // controller untuk ...
+                // controller untuk menangkap input nama
                 controller: inputNama,
-                // Ketika Dikirim nanti
+                // Ketika user menekan tombol 'Enter'/'Done' pada keyboard ponsel
                 onFieldSubmitted: (values) {
-                  // isi blabla ...
                   inputNama.text = values;
                 },
               ),
             ),
           ),
-          // Untuk kasih jarak antar widget
-          Padding(
-            padding: EdgeInsets.all(16),
-          ),
-          // Tombol
-          ElevatedButton(
-            child: Text("Tampilkan Nama"),
-            onPressed: () {
-              print(inputNama.text);
-            },
-          ),
+          
+          // NOTE: Kedua ElevatedButton ("Tampilkan Nama" dan "Logout") serta padding jaraknya sudah dihapus dari sini
         ],
       ),
     );
